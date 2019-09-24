@@ -1,0 +1,19 @@
+CREATE TABLE `etl_src_tgt_sql` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增长ID',
+  `data_source` varchar(20) DEFAULT NULL COMMENT '数据源',
+  `src_dns` varchar(20) DEFAULT NULL COMMENT '数据源数据库系统',
+  `src_sql` text COMMENT 'sql脚本',
+  `tgt_table` varchar(50) DEFAULT NULL COMMENT '目标表',
+  `columns` text ,
+  `unique_key` tinytext ,
+  `src_sn` int(11) DEFAULT NULL COMMENT '映射sql序列号',
+  `is_use` tinyint(4) DEFAULT '1' COMMENT '是否使用',
+  `memo` varchar(1000) DEFAULT NULL COMMENT '记录备注',
+  `is_del` tinyint(4) DEFAULT '0' COMMENT '删除标识',
+  `unique_id` varchar(32) DEFAULT NULL COMMENT '记录唯一标识',
+  `insert_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '首次插入时间',
+  `insert_by` varchar(50) DEFAULT NULL COMMENT '首次插入操作人',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最近更新时间',
+  `update_by` varchar(50) DEFAULT NULL COMMENT '最近更新操作人',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='数据映射sql脚本';
